@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./asset/fav.png" type="image/x-icon" />
+    <title>music player</title>
+  </head>
+  <body>
+    <audio
+      src="./asset/music/Mojtaba Dorbidi - Khoshgel Mikhandi (320).mp3"
+    ></audio>
+    <div class="cover"></div>
+    <div class="container">
+      <div class="musicPlayerContainer">
+        <div class="imageCoverContainer">
+          <div class="imageCover"></div>
+        </div>
+        <div class="tilteContainer">
+          <h2 class="title"></h2>
+          <h4 class="singer"></h4>
+        </div>
+        <div class="progressContainer">
+          <span id="current">00:00</span>
+          <input id="progressbar" type="range" value="0" max="100" />
+          <span id="total">00:00</span>
+        </div>
+        <div class="btnContainer">
+          <img
+            id="previous"
+            src="./asset/btn/rewind-button.png"
+            alt="previous"
+            title="previous"
+          />
+          <img
+            id="play"
+            src="./asset/btn/play-button.png"
+            alt="play"
+            title="play"
+          />
+          <img
+            id="next"
+            src="./asset/btn/forward-button.png"
+            alt="next"
+            title="next"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

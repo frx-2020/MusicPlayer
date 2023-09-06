@@ -29,24 +29,24 @@ let playlist = [
     title: "jaddeh",
     singer: "Arash&masih",
     src: "./asset/music/masih_ft_arash_ap_jaddeh.mp3",
-    cover: "./asset/cover/Masih-Arash-Jaddeh.jpg",
-    duration:191
+    cover: "./asset/cover/Masih-Arash-Jaddeh.jpg"
+   
   },
   {
     id: 2,
     title: "Mesle Gol",
     singer: "Masoud Sadeghloo",
     src: "./asset/music/Masoud Sadeghloo - Mesle Gol.mp3",
-    cover: "./asset/cover/Masoud-Sadeghloo-Mesle-Gol.jpg",
-    duration:163
+    cover: "./asset/cover/Masoud-Sadeghloo-Mesle-Gol.jpg"
+
   },
   {
     id: 3,
     title: "Aadat",
     singer: "Shadmehr Aghili",
     src: "./asset/music/Shadmehr Aghili - Aadat.mp3",
-    cover: "./asset/cover/Shadmehr-Adat.jpg",
-    duration:252
+    cover: "./asset/cover/Shadmehr-Adat.jpg"
+   
   },
  
 ];
@@ -57,8 +57,13 @@ singer.innerHTML = playlist[index].singer;
 body.style.backgroundImage = `url(${playlist[index].cover})`;
 music.setAttribute("src", playlist[index].src);
 music.addEventListener('loadeddata',(event)=>{
+  duration.time=Math.floor(event.target.duration)
+  duration.min = Math.floor(duration.time / 60);
+  duration.sec = duration.time % 60;
+  totalTime.innerHTML = `${duration.min}:${duration.sec}`;
 
-})
+  })
+
 
 
 playBtn.addEventListener("click", playPauseHandler);
@@ -82,11 +87,7 @@ function playPauseHandler() {
   }
 }
 function playHandler() {
-  duration.time=playlist[index].duration
- duration.min = Math.floor(duration.time / 60);
-  duration.sec = duration.time % 60;
-  totalTime.innerHTML = `${duration.min}:${duration.sec}`;
-  console.log('music loaded',duration.time);
+ 
  
     setInterval(() => {
         

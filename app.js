@@ -45,14 +45,7 @@ let playlist = [
     src: "./asset/music/Shadmehr Aghili - Aadat.mp3",
     cover: "./asset/cover/Shadmehr-Adat.jpg",
   },
-  // {
-  //   id: 4,
-  //   title: "Khoshgel Mikhandi",
-  //   singer: "Mojtaba Dorbidi",
-  //   src: "./asset/music/Mojtaba Dorbidi - Khoshgel Mikhandi (320).mp3",
-  //   cover:
-  //     "./asset/cover/mojtaba-dorbidi-khoshgel-mikhandi-2023-08-18-20-20-40.jpg",
-  // },
+ 
 ];
 
 coverImage.style.backgroundImage = `url(${playlist[index].cover})`;
@@ -60,7 +53,13 @@ title.innerHTML = playlist[index].title;
 singer.innerHTML = playlist[index].singer;
 body.style.backgroundImage = `url(${playlist[index].cover})`;
 music.setAttribute("src", playlist[index].src);
-
+music.addEventListener('loadeddata',(event)=>{
+duration.time=Math.floor(event.target.duration)
+ duration.min = Math.floor(duration.time / 60);
+  duration.sec = duration.time % 60;
+  totalTime.innerHTML = `${duration.min}:${duration.sec}`;
+  console.log('music loaded',duration.time);
+})
 
 
 playBtn.addEventListener("click", playPauseHandler);
@@ -84,7 +83,7 @@ function playPauseHandler() {
   }
 }
 function playHandler() {
-  durationHandler()
+ 
     setInterval(() => {
         
       current.time = Math.floor(music.currentTime);
@@ -118,18 +117,6 @@ function playHandler() {
     }, 1000);
   music.play();
  
-  // setTimeout(() => {
-  //   durationHandler();
-  // }, 50);
-  
-}
-function durationHandler() {
-  setTimeout(() => {
-    duration.time = Math.floor(music.duration);
-  duration.min = Math.floor(duration.time / 60);
-  duration.sec = duration.time % 60;
-  totalTime.innerHTML = `${duration.min}:${duration.sec}`;
-  }, 60);
   
 }
 

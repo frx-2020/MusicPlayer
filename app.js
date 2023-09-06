@@ -30,6 +30,7 @@ let playlist = [
     singer: "Arash&masih",
     src: "./asset/music/masih_ft_arash_ap_jaddeh.mp3",
     cover: "./asset/cover/Masih-Arash-Jaddeh.jpg",
+    duration:191
   },
   {
     id: 2,
@@ -37,6 +38,7 @@ let playlist = [
     singer: "Masoud Sadeghloo",
     src: "./asset/music/Masoud Sadeghloo - Mesle Gol.mp3",
     cover: "./asset/cover/Masoud-Sadeghloo-Mesle-Gol.jpg",
+    duration:163
   },
   {
     id: 3,
@@ -44,6 +46,7 @@ let playlist = [
     singer: "Shadmehr Aghili",
     src: "./asset/music/Shadmehr Aghili - Aadat.mp3",
     cover: "./asset/cover/Shadmehr-Adat.jpg",
+    duration:252
   },
  
 ];
@@ -54,11 +57,7 @@ singer.innerHTML = playlist[index].singer;
 body.style.backgroundImage = `url(${playlist[index].cover})`;
 music.setAttribute("src", playlist[index].src);
 music.addEventListener('loadeddata',(event)=>{
-duration.time=Math.floor(event.target.duration)
- duration.min = Math.floor(duration.time / 60);
-  duration.sec = duration.time % 60;
-  totalTime.innerHTML = `${duration.min}:${duration.sec}`;
-  console.log('music loaded',duration.time);
+
 })
 
 
@@ -83,6 +82,11 @@ function playPauseHandler() {
   }
 }
 function playHandler() {
+  duration.time=playlist[index].duration
+ duration.min = Math.floor(duration.time / 60);
+  duration.sec = duration.time % 60;
+  totalTime.innerHTML = `${duration.min}:${duration.sec}`;
+  console.log('music loaded',duration.time);
  
     setInterval(() => {
         
